@@ -7,6 +7,7 @@
 #include <QDragEnterEvent>
 #include <QListWidgetItem>
 #include <QDropEvent>
+#include <QMimeData>
 #include "core.h"
 
 namespace Ui {

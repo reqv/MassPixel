@@ -10,23 +10,23 @@
 #define UI_MASSMAIN_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QFrame>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QLineEdit>
-#include <QtGui/QListWidget>
-#include <QtGui/QMainWindow>
-#include <QtGui/QMenu>
-#include <QtGui/QMenuBar>
-#include <QtGui/QPushButton>
-#include <QtGui/QSlider>
-#include <QtGui/QSpacerItem>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QWidget>
+#include <QAction>
+#include <QApplication>
+#include <QButtonGroup>
+#include <QFrame>
+#include <QHBoxLayout>
+#include <QHeaderView>
+#include <QLabel>
+#include <QLineEdit>
+#include <QListWidget>
+#include <QMainWindow>
+#include <QMenu>
+#include <QMenuBar>
+#include <QPushButton>
+#include <QSlider>
+#include <QSpacerItem>
+#include <QVBoxLayout>
+#include <QWidget>
 
 QT_BEGIN_NAMESPACE
 
@@ -312,30 +312,30 @@ public:
         menuInfo->addAction(actionO_programie);
 
         retranslateUi(MassMain);
-        QObject::connect(actionBMP, SIGNAL(activated()), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionJPEG, SIGNAL(activated()), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionPNG, SIGNAL(activated()), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionCzysc, SIGNAL(activated()), MassMain, SLOT(czyscliste()));
+        QObject::connect(actionBMP, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
+        QObject::connect(actionJPEG, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
+        QObject::connect(actionPNG, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
+        QObject::connect(actionCzysc, SIGNAL(triggered(bool)), MassMain, SLOT(czyscliste()));
         QObject::connect(startthem, SIGNAL(clicked()), MassMain, SLOT(go()));
-        QObject::connect(actionICO, SIGNAL(activated()), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionWczytaj_Plik, SIGNAL(activated()), MassMain, SLOT(load_file()));
-        QObject::connect(actionWczytaj_Katalog, SIGNAL(activated()), MassMain, SLOT(load_dir()));
-        QObject::connect(actionZamknij, SIGNAL(activated()), MassMain, SLOT(close()));
-        QObject::connect(actionO_qt, SIGNAL(activated()), MassMain, SLOT(oqt()));
-        QObject::connect(actionJPG, SIGNAL(activated()), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionO_programie, SIGNAL(activated()), MassMain, SLOT(oprogramie()));
-        QObject::connect(actionJP2, SIGNAL(activated()), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionPIC, SIGNAL(activated()), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionTIIFF, SIGNAL(activated()), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionTif, SIGNAL(activated()), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionRGB, SIGNAL(activated()), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionRGBA, SIGNAL(activated()), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionTGA, SIGNAL(activated()), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionPCX, SIGNAL(activated()), MassMain, SLOT(ZmienFormat()));
+        QObject::connect(actionICO, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
+        QObject::connect(actionWczytaj_Plik, SIGNAL(triggered(bool)), MassMain, SLOT(load_file()));
+        QObject::connect(actionWczytaj_Katalog, SIGNAL(triggered(bool)), MassMain, SLOT(load_dir()));
+        QObject::connect(actionZamknij, SIGNAL(triggered(bool)), MassMain, SLOT(close()));
+        QObject::connect(actionO_qt, SIGNAL(triggered(bool)), MassMain, SLOT(oqt()));
+        QObject::connect(actionJPG, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
+        QObject::connect(actionO_programie, SIGNAL(triggered(bool)), MassMain, SLOT(oprogramie()));
+        QObject::connect(actionJP2, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
+        QObject::connect(actionPIC, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
+        QObject::connect(actionTIIFF, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
+        QObject::connect(actionTif, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
+        QObject::connect(actionRGB, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
+        QObject::connect(actionRGBA, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
+        QObject::connect(actionTGA, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
+        QObject::connect(actionPCX, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
         QObject::connect(stopthem, SIGNAL(clicked()), MassMain, SLOT(stopthem()));
         QObject::connect(ustawienia, SIGNAL(clicked()), MassMain, SLOT(ustawienia()));
         QObject::connect(jakosc_bar, SIGNAL(sliderMoved(int)), MassMain, SLOT(zmienjakosc(int)));
-        QObject::connect(actionResetuj, SIGNAL(activated()), MassMain, SLOT(reset()));
+        QObject::connect(actionResetuj, SIGNAL(triggered(bool)), MassMain, SLOT(reset()));
         QObject::connect(listWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)), MassMain, SLOT(one(QListWidgetItem*)));
 
         QMetaObject::connectSlotsByName(MassMain);
@@ -343,46 +343,46 @@ public:
 
     void retranslateUi(QMainWindow *MassMain)
     {
-        MassMain->setWindowTitle(QApplication::translate("MassMain", "MassMain", 0, QApplication::UnicodeUTF8));
-        actionWczytaj_Katalog->setText(QApplication::translate("MassMain", "Wczytaj Katalog", 0, QApplication::UnicodeUTF8));
-        actionZamknij->setText(QApplication::translate("MassMain", "Zamknij", 0, QApplication::UnicodeUTF8));
-        actionJPEG->setText(QApplication::translate("MassMain", "JPEG", 0, QApplication::UnicodeUTF8));
-        actionPNG->setText(QApplication::translate("MassMain", "PNG", 0, QApplication::UnicodeUTF8));
-        actionBMP->setText(QApplication::translate("MassMain", "BMP", 0, QApplication::UnicodeUTF8));
-        actionO_qt->setText(QApplication::translate("MassMain", "O Qt ...", 0, QApplication::UnicodeUTF8));
-        actionO_programie->setText(QApplication::translate("MassMain", "O programie...", 0, QApplication::UnicodeUTF8));
-        actionAutor->setText(QApplication::translate("MassMain", "Autor", 0, QApplication::UnicodeUTF8));
-        actionCzysc->setText(QApplication::translate("MassMain", "Czysc", 0, QApplication::UnicodeUTF8));
-        actionICO->setText(QApplication::translate("MassMain", "ICO", 0, QApplication::UnicodeUTF8));
-        actionWczytaj_Plik->setText(QApplication::translate("MassMain", "Wczytaj Plik", 0, QApplication::UnicodeUTF8));
-        actionJPG->setText(QApplication::translate("MassMain", "JPG", 0, QApplication::UnicodeUTF8));
-        actionBW->setText(QApplication::translate("MassMain", "BW", 0, QApplication::UnicodeUTF8));
-        actionEPS->setText(QApplication::translate("MassMain", "EPS", 0, QApplication::UnicodeUTF8));
-        actionEPSF->setText(QApplication::translate("MassMain", "EPSF", 0, QApplication::UnicodeUTF8));
-        actionRGB->setText(QApplication::translate("MassMain", "RGB", 0, QApplication::UnicodeUTF8));
-        actionRGBA->setText(QApplication::translate("MassMain", "RGBA", 0, QApplication::UnicodeUTF8));
-        actionTGA->setText(QApplication::translate("MassMain", "TGA", 0, QApplication::UnicodeUTF8));
-        actionPIC->setText(QApplication::translate("MassMain", "PIC", 0, QApplication::UnicodeUTF8));
-        actionJP2->setText(QApplication::translate("MassMain", "JP2", 0, QApplication::UnicodeUTF8));
-        actionPCX->setText(QApplication::translate("MassMain", "PCX", 0, QApplication::UnicodeUTF8));
-        actionPPM->setText(QApplication::translate("MassMain", "PPM", 0, QApplication::UnicodeUTF8));
-        actionTif->setText(QApplication::translate("MassMain", "TIF", 0, QApplication::UnicodeUTF8));
-        actionTIIFF->setText(QApplication::translate("MassMain", "TIFF", 0, QApplication::UnicodeUTF8));
-        actionEPSI->setText(QApplication::translate("MassMain", "EPSI", 0, QApplication::UnicodeUTF8));
-        actionPrzedrostek->setText(QApplication::translate("MassMain", "Przedrostek", 0, QApplication::UnicodeUTF8));
-        actionResetuj->setText(QApplication::translate("MassMain", "Resetuj", 0, QApplication::UnicodeUTF8));
-        startthem->setText(QApplication::translate("MassMain", "Start", 0, QApplication::UnicodeUTF8));
-        stopthem->setText(QApplication::translate("MassMain", "Stop", 0, QApplication::UnicodeUTF8));
-        ustawienia->setText(QApplication::translate("MassMain", "Ustawienia", 0, QApplication::UnicodeUTF8));
-        przedrostek_label->setText(QApplication::translate("MassMain", "Przedrostek", 0, QApplication::UnicodeUTF8));
-        przedrostek->setText(QApplication::translate("MassMain", "out_", 0, QApplication::UnicodeUTF8));
-        jakosc_label->setText(QApplication::translate("MassMain", "Jako\305\233\304\207:", 0, QApplication::UnicodeUTF8));
-        Szerokosc_label->setText(QApplication::translate("MassMain", "Szeroko\305\233\304\207", 0, QApplication::UnicodeUTF8));
+        MassMain->setWindowTitle(QApplication::translate("MassMain", "MassMain", 0));
+        actionWczytaj_Katalog->setText(QApplication::translate("MassMain", "Wczytaj Katalog", 0));
+        actionZamknij->setText(QApplication::translate("MassMain", "Zamknij", 0));
+        actionJPEG->setText(QApplication::translate("MassMain", "JPEG", 0));
+        actionPNG->setText(QApplication::translate("MassMain", "PNG", 0));
+        actionBMP->setText(QApplication::translate("MassMain", "BMP", 0));
+        actionO_qt->setText(QApplication::translate("MassMain", "O Qt ...", 0));
+        actionO_programie->setText(QApplication::translate("MassMain", "O programie...", 0));
+        actionAutor->setText(QApplication::translate("MassMain", "Autor", 0));
+        actionCzysc->setText(QApplication::translate("MassMain", "Czysc", 0));
+        actionICO->setText(QApplication::translate("MassMain", "ICO", 0));
+        actionWczytaj_Plik->setText(QApplication::translate("MassMain", "Wczytaj Plik", 0));
+        actionJPG->setText(QApplication::translate("MassMain", "JPG", 0));
+        actionBW->setText(QApplication::translate("MassMain", "BW", 0));
+        actionEPS->setText(QApplication::translate("MassMain", "EPS", 0));
+        actionEPSF->setText(QApplication::translate("MassMain", "EPSF", 0));
+        actionRGB->setText(QApplication::translate("MassMain", "RGB", 0));
+        actionRGBA->setText(QApplication::translate("MassMain", "RGBA", 0));
+        actionTGA->setText(QApplication::translate("MassMain", "TGA", 0));
+        actionPIC->setText(QApplication::translate("MassMain", "PIC", 0));
+        actionJP2->setText(QApplication::translate("MassMain", "JP2", 0));
+        actionPCX->setText(QApplication::translate("MassMain", "PCX", 0));
+        actionPPM->setText(QApplication::translate("MassMain", "PPM", 0));
+        actionTif->setText(QApplication::translate("MassMain", "TIF", 0));
+        actionTIIFF->setText(QApplication::translate("MassMain", "TIFF", 0));
+        actionEPSI->setText(QApplication::translate("MassMain", "EPSI", 0));
+        actionPrzedrostek->setText(QApplication::translate("MassMain", "Przedrostek", 0));
+        actionResetuj->setText(QApplication::translate("MassMain", "Resetuj", 0));
+        startthem->setText(QApplication::translate("MassMain", "Start", 0));
+        stopthem->setText(QApplication::translate("MassMain", "Stop", 0));
+        ustawienia->setText(QApplication::translate("MassMain", "Ustawienia", 0));
+        przedrostek_label->setText(QApplication::translate("MassMain", "Przedrostek", 0));
+        przedrostek->setText(QApplication::translate("MassMain", "out_", 0));
+        jakosc_label->setText(QApplication::translate("MassMain", "Jako\305\233\304\207:", 0));
+        Szerokosc_label->setText(QApplication::translate("MassMain", "Szeroko\305\233\304\207", 0));
         Szerokosc->setInputMask(QString());
-        Wysokosc_label->setText(QApplication::translate("MassMain", "Wysoko\305\233\304\207", 0, QApplication::UnicodeUTF8));
-        menuPliki->setTitle(QApplication::translate("MassMain", "Pliki", 0, QApplication::UnicodeUTF8));
-        menuFormat->setTitle(QApplication::translate("MassMain", "Format", 0, QApplication::UnicodeUTF8));
-        menuInfo->setTitle(QApplication::translate("MassMain", "Info", 0, QApplication::UnicodeUTF8));
+        Wysokosc_label->setText(QApplication::translate("MassMain", "Wysoko\305\233\304\207", 0));
+        menuPliki->setTitle(QApplication::translate("MassMain", "Pliki", 0));
+        menuFormat->setTitle(QApplication::translate("MassMain", "Format", 0));
+        menuInfo->setTitle(QApplication::translate("MassMain", "Info", 0));
     } // retranslateUi
 
 };

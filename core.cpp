@@ -1,4 +1,5 @@
 #include "core.h"
+#include <iostream>
 
 Obraz::Obraz(QString gdzie)
 {
@@ -14,11 +15,15 @@ Obraz::~Obraz()
 
 void Obraz::ustaw(QString f,int j, QString szer, QString wys, QString przed)
 {
+    QDir* dir = new QDir("output");
+    if(!dir->exists())
+        dir->mkdir(".");
     status = tr("ładuję...");
     QFileInfo find(sciezka);
     format = f;
     jakosc = j;
-    output = "output/"+przed+find.baseName();
+    output = dir->absolutePath()+"/"+przed+find.baseName();
+    std::cout<<output.toStdString()<<endl;
     szerokosc = szer.toInt();
     wysokosc = wys.toInt();
     if((szerokosc != 0) or (wysokosc != 0))

@@ -211,7 +211,7 @@
      <x>0</x>
      <y>0</y>
      <width>1024</width>
-     <height>29</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuPliki">
@@ -419,7 +419,7 @@
  <connections>
   <connection>
    <sender>actionBMP</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MassMain</receiver>
    <slot>ZmienFormat()</slot>
    <hints>
@@ -435,7 +435,7 @@
   </connection>
   <connection>
    <sender>actionJPEG</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MassMain</receiver>
    <slot>ZmienFormat()</slot>
    <hints>
@@ -451,7 +451,7 @@
   </connection>
   <connection>
    <sender>actionPNG</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MassMain</receiver>
    <slot>ZmienFormat()</slot>
    <hints>
@@ -467,7 +467,7 @@
   </connection>
   <connection>
    <sender>actionCzysc</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MassMain</receiver>
    <slot>czyscliste()</slot>
    <hints>
@@ -499,7 +499,7 @@
   </connection>
   <connection>
    <sender>actionICO</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MassMain</receiver>
    <slot>ZmienFormat()</slot>
    <hints>
@@ -515,7 +515,7 @@
   </connection>
   <connection>
    <sender>actionWczytaj_Plik</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MassMain</receiver>
    <slot>load_file()</slot>
    <hints>
@@ -531,7 +531,7 @@
   </connection>
   <connection>
    <sender>actionWczytaj_Katalog</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MassMain</receiver>
    <slot>load_dir()</slot>
    <hints>
@@ -547,7 +547,7 @@
   </connection>
   <connection>
    <sender>actionZamknij</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MassMain</receiver>
    <slot>close()</slot>
    <hints>
@@ -563,7 +563,7 @@
   </connection>
   <connection>
    <sender>actionO_qt</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MassMain</receiver>
    <slot>oqt()</slot>
    <hints>
@@ -579,7 +579,7 @@
   </connection>
   <connection>
    <sender>actionJPG</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MassMain</receiver>
    <slot>ZmienFormat()</slot>
    <hints>
@@ -595,7 +595,7 @@
   </connection>
   <connection>
    <sender>actionO_programie</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MassMain</receiver>
    <slot>oprogramie()</slot>
    <hints>
@@ -611,7 +611,7 @@
   </connection>
   <connection>
    <sender>actionJP2</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MassMain</receiver>
    <slot>ZmienFormat()</slot>
    <hints>
@@ -627,7 +627,7 @@
   </connection>
   <connection>
    <sender>actionPIC</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MassMain</receiver>
    <slot>ZmienFormat()</slot>
    <hints>
@@ -643,7 +643,7 @@
   </connection>
   <connection>
    <sender>actionTIIFF</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MassMain</receiver>
    <slot>ZmienFormat()</slot>
    <hints>
@@ -659,7 +659,7 @@
   </connection>
   <connection>
    <sender>actionTif</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MassMain</receiver>
    <slot>ZmienFormat()</slot>
    <hints>
@@ -675,7 +675,7 @@
   </connection>
   <connection>
    <sender>actionRGB</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MassMain</receiver>
    <slot>ZmienFormat()</slot>
    <hints>
@@ -691,7 +691,7 @@
   </connection>
   <connection>
    <sender>actionRGBA</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MassMain</receiver>
    <slot>ZmienFormat()</slot>
    <hints>
@@ -707,7 +707,7 @@
   </connection>
   <connection>
    <sender>actionTGA</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MassMain</receiver>
    <slot>ZmienFormat()</slot>
    <hints>
@@ -723,7 +723,7 @@
   </connection>
   <connection>
    <sender>actionPCX</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MassMain</receiver>
    <slot>ZmienFormat()</slot>
    <hints>
@@ -787,7 +787,7 @@
   </connection>
   <connection>
    <sender>actionResetuj</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MassMain</receiver>
    <slot>reset()</slot>
    <hints>

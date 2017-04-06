@@ -1,4 +1,4 @@
-#include <QtGui/QApplication>
+#include <QApplication>
 #include "massmain.h"
 
 int main(int argc, char *argv[])

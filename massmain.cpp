@@ -1,11 +1,13 @@
 #include "massmain.h"
 #include "ui_massmain.h"
+#include <iostream>
+
 //########################################################################## Konstruktor/Destruktor
 MassMain::MassMain(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MassMain)
 {
-    QTextCodec::setCodecForTr(QTextCodec::codecForName("utf-8"));
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("utf-8"));
     format="PNG";
     ui->setupUi(this);
     setAcceptDrops(true);
@@ -26,8 +28,12 @@ MassMain::~MassMain()
 
 void MassMain::dragEnterEvent(QDragEnterEvent *event)   //rozpoznanie elementu przenoszonego
 {
-     if (event->mimeData()->hasFormat("text/plain"))
+     //if (event->mimeData()->hasFormat("image/jpg"))  //changed from hasFormat()
+    // {
+       //  std::cout<<"alright"<<std::endl;
          event->acceptProposedAction();
+     //}else
+     //   std::cout<<"KURWA MAC"<<std::endl;
 }
 
 void MassMain::dropEvent(QDropEvent *event)

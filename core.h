@@ -6,7 +6,7 @@
 #include <QImage>
 #include <QImageReader>
 #include <QImageWriter>
-#include <QtConcurrentRun>
+#include <QtConcurrent/QtConcurrentRun>
 #include <QFile>
 #include <QFileDialog>
 #include <QDir>
