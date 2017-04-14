@@ -22,6 +22,9 @@
     <height>823</height>
    </size>
   </property>
+  <property name="acceptDrops">
+   <bool>false</bool>
+  </property>
   <property name="windowTitle">
    <string>MassMain</string>
   </property>
@@ -38,6 +41,9 @@
      <height>768</height>
     </size>
    </property>
+   <property name="acceptDrops">
+    <bool>false</bool>
+   </property>
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
@@ -51,14 +57,14 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QPushButton" name="startthem">
+        <widget class="QPushButton" name="startButton">
          <property name="text">
           <string>Start</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="stopthem">
+        <widget class="QPushButton" name="stopButton">
          <property name="text">
           <string>Stop</string>
          </property>
@@ -78,14 +84,14 @@
         </spacer>
        </item>
        <item>
-        <widget class="QLineEdit" name="corobie">
+        <widget class="QLineEdit" name="settingsTextField">
          <property name="readOnly">
           <bool>true</bool>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="ustawienia">
+        <widget class="QPushButton" name="optionsButton">
          <property name="text">
           <string>Ustawienia</string>
          </property>
@@ -101,7 +107,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QWidget" name="Usta" native="true">
+      <widget class="QWidget" name="Options" native="true">
        <property name="minimumSize">
         <size>
          <width>0</width>
@@ -117,16 +123,16 @@
           <height>33</height>
          </rect>
         </property>
-        <layout class="QHBoxLayout" name="usta_bar">
+        <layout class="QHBoxLayout" name="OptionsGrid">
          <item>
-          <widget class="QLabel" name="przedrostek_label">
+          <widget class="QLabel" name="prefixLabel">
            <property name="text">
             <string>Przedrostek</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="przedrostek">
+          <widget class="QLineEdit" name="prefixField">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -145,28 +151,28 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="jakosc_label">
+          <widget class="QLabel" name="QualityLabel">
            <property name="text">
             <string>Jakość:</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSlider" name="jakosc_bar">
+          <widget class="QSlider" name="QualityBar">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="Szerokosc_label">
+          <widget class="QLabel" name="WidthLabel">
            <property name="text">
             <string>Szerokość</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="Szerokosc">
+          <widget class="QLineEdit" name="WidthField">
            <property name="maximumSize">
             <size>
              <width>60</width>
@@ -179,14 +185,14 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="Wysokosc_label">
+          <widget class="QLabel" name="HeightLabel">
            <property name="text">
             <string>Wysokość</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="Wysokosc">
+          <widget class="QLineEdit" name="HeightField">
            <property name="maximumSize">
             <size>
              <width>60</width>
@@ -200,7 +206,11 @@
       </widget>
      </item>
      <item>
-      <widget class="QListWidget" name="listWidget"/>
+      <widget class="QListWidget" name="listWidget">
+       <property name="acceptDrops">
+        <bool>false</bool>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
@@ -214,15 +224,15 @@
      <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuPliki">
+   <widget class="QMenu" name="menuFiles">
     <property name="title">
      <string>Pliki</string>
     </property>
-    <addaction name="actionWczytaj_Plik"/>
-    <addaction name="actionWczytaj_Katalog"/>
+    <addaction name="actionLoadFile"/>
+    <addaction name="actionLoadDir"/>
     <addaction name="separator"/>
-    <addaction name="actionResetuj"/>
-    <addaction name="actionCzysc"/>
+    <addaction name="actionReset"/>
+    <addaction name="actionClear"/>
     <addaction name="separator"/>
     <addaction name="actionZamknij"/>
    </widget>
@@ -255,15 +265,15 @@
     <property name="title">
      <string>Info</string>
     </property>
-    <addaction name="actionO_qt"/>
+    <addaction name="actionAboutQt"/>
     <addaction name="separator"/>
-    <addaction name="actionO_programie"/>
+    <addaction name="actionAbout"/>
    </widget>
-   <addaction name="menuPliki"/>
+   <addaction name="menuFiles"/>
    <addaction name="menuFormat"/>
    <addaction name="menuInfo"/>
   </widget>
-  <action name="actionWczytaj_Katalog">
+  <action name="actionLoadDir">
    <property name="text">
     <string>Wczytaj Katalog</string>
    </property>
@@ -303,12 +313,12 @@
     <string>BMP</string>
    </property>
   </action>
-  <action name="actionO_qt">
+  <action name="actionAboutQt">
    <property name="text">
     <string>O Qt ...</string>
    </property>
   </action>
-  <action name="actionO_programie">
+  <action name="actionAbout">
    <property name="text">
     <string>O programie...</string>
    </property>
@@ -318,7 +328,7 @@
     <string>Autor</string>
    </property>
   </action>
-  <action name="actionCzysc">
+  <action name="actionClear">
    <property name="text">
     <string>Czysc</string>
    </property>
@@ -328,7 +338,7 @@
     <string>ICO</string>
    </property>
   </action>
-  <action name="actionWczytaj_Plik">
+  <action name="actionLoadFile">
    <property name="text">
     <string>Wczytaj Plik</string>
    </property>
@@ -408,7 +418,7 @@
     <string>Przedrostek</string>
    </property>
   </action>
-  <action name="actionResetuj">
+  <action name="actionReset">
    <property name="text">
     <string>Resetuj</string>
    </property>
@@ -421,7 +431,7 @@
    <sender>actionBMP</sender>
    <signal>triggered()</signal>
    <receiver>MassMain</receiver>
-   <slot>ZmienFormat()</slot>
+   <slot>changeFormat()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -437,7 +447,7 @@
    <sender>actionJPEG</sender>
    <signal>triggered()</signal>
    <receiver>MassMain</receiver>
-   <slot>ZmienFormat()</slot>
+   <slot>changeFormat()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -453,7 +463,7 @@
    <sender>actionPNG</sender>
    <signal>triggered()</signal>
    <receiver>MassMain</receiver>
-   <slot>ZmienFormat()</slot>
+   <slot>changeFormat()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -466,10 +476,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>actionCzysc</sender>
+   <sender>actionClear</sender>
    <signal>triggered()</signal>
    <receiver>MassMain</receiver>
-   <slot>czyscliste()</slot>
+   <slot>clearList()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -482,7 +492,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>startthem</sender>
+   <sender>startButton</sender>
    <signal>clicked()</signal>
    <receiver>MassMain</receiver>
    <slot>go()</slot>
@@ -501,7 +511,7 @@
    <sender>actionICO</sender>
    <signal>triggered()</signal>
    <receiver>MassMain</receiver>
-   <slot>ZmienFormat()</slot>
+   <slot>changeFormat()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -514,10 +524,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>actionWczytaj_Plik</sender>
+   <sender>actionLoadFile</sender>
    <signal>triggered()</signal>
    <receiver>MassMain</receiver>
-   <slot>load_file()</slot>
+   <slot>loadFile()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -530,10 +540,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>actionWczytaj_Katalog</sender>
+   <sender>actionLoadDir</sender>
    <signal>triggered()</signal>
    <receiver>MassMain</receiver>
-   <slot>load_dir()</slot>
+   <slot>loadDir()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -562,10 +572,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>actionO_qt</sender>
+   <sender>actionAboutQt</sender>
    <signal>triggered()</signal>
    <receiver>MassMain</receiver>
-   <slot>oqt()</slot>
+   <slot>aboutQt()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -581,7 +591,7 @@
    <sender>actionJPG</sender>
    <signal>triggered()</signal>
    <receiver>MassMain</receiver>
-   <slot>ZmienFormat()</slot>
+   <slot>changeFormat()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -594,10 +604,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>actionO_programie</sender>
+   <sender>actionAbout</sender>
    <signal>triggered()</signal>
    <receiver>MassMain</receiver>
-   <slot>oprogramie()</slot>
+   <slot>about()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -613,7 +623,7 @@
    <sender>actionJP2</sender>
    <signal>triggered()</signal>
    <receiver>MassMain</receiver>
-   <slot>ZmienFormat()</slot>
+   <slot>changeFormat()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -629,7 +639,7 @@
    <sender>actionPIC</sender>
    <signal>triggered()</signal>
    <receiver>MassMain</receiver>
-   <slot>ZmienFormat()</slot>
+   <slot>changeFormat()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -645,7 +655,7 @@
    <sender>actionTIIFF</sender>
    <signal>triggered()</signal>
    <receiver>MassMain</receiver>
-   <slot>ZmienFormat()</slot>
+   <slot>changeFormat()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -661,7 +671,7 @@
    <sender>actionTif</sender>
    <signal>triggered()</signal>
    <receiver>MassMain</receiver>
-   <slot>ZmienFormat()</slot>
+   <slot>changeFormat()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -677,7 +687,7 @@
    <sender>actionRGB</sender>
    <signal>triggered()</signal>
    <receiver>MassMain</receiver>
-   <slot>ZmienFormat()</slot>
+   <slot>changeFormat()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -693,7 +703,7 @@
    <sender>actionRGBA</sender>
    <signal>triggered()</signal>
    <receiver>MassMain</receiver>
-   <slot>ZmienFormat()</slot>
+   <slot>changeFormat()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -709,7 +719,7 @@
    <sender>actionTGA</sender>
    <signal>triggered()</signal>
    <receiver>MassMain</receiver>
-   <slot>ZmienFormat()</slot>
+   <slot>changeFormat()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -725,7 +735,7 @@
    <sender>actionPCX</sender>
    <signal>triggered()</signal>
    <receiver>MassMain</receiver>
-   <slot>ZmienFormat()</slot>
+   <slot>changeFormat()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -738,10 +748,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>stopthem</sender>
+   <sender>stopButton</sender>
    <signal>clicked()</signal>
    <receiver>MassMain</receiver>
-   <slot>stopthem()</slot>
+   <slot>stopThem()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>145</x>
@@ -754,10 +764,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>ustawienia</sender>
+   <sender>optionsButton</sender>
    <signal>clicked()</signal>
    <receiver>MassMain</receiver>
-   <slot>ustawienia()</slot>
+   <slot>settings()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>964</x>
@@ -770,10 +780,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>jakosc_bar</sender>
+   <sender>QualityBar</sender>
    <signal>sliderMoved(int)</signal>
    <receiver>MassMain</receiver>
-   <slot>zmienjakosc(int)</slot>
+   <slot>changeQuality(int)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>412</x>
@@ -786,7 +796,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>actionResetuj</sender>
+   <sender>actionReset</sender>
    <signal>triggered()</signal>
    <receiver>MassMain</receiver>
    <slot>reset()</slot>
@@ -819,19 +829,17 @@
   </connection>
  </connections>
  <slots>
-  <slot>ZmienFormat()</slot>
-  <slot>czyscliste()</slot>
+  <slot>changeFormat()</slot>
+  <slot>clearList()</slot>
   <slot>go()</slot>
-  <slot>load_file()</slot>
-  <slot>load_dir()</slot>
-  <slot>oqt()</slot>
-  <slot>oprogramie()</slot>
-  <slot>oautorze()</slot>
-  <slot>stopthem()</slot>
-  <slot>pausethem()</slot>
+  <slot>loadFile()</slot>
+  <slot>loadDir()</slot>
+  <slot>aboutQt()</slot>
+  <slot>about()</slot>
+  <slot>stopThem()</slot>
   <slot>one(QListWidgetItem*)</slot>
-  <slot>ustawienia()</slot>
-  <slot>zmienjakosc(int)</slot>
+  <slot>settings()</slot>
+  <slot>changeQuality(int)</slot>
   <slot>reset()</slot>
  </slots>
 </ui>

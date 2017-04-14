@@ -36,7 +36,7 @@ HEADERS  += \
 FORMS    += \
     massmain.ui
 
-RESOURCES += zasoby.qrc
+RESOURCES += res.qrc
 
 TRANSLATIONS += lang/pl_PL.ts \
 lang/en_US.ts \

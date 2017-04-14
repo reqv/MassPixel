@@ -1,93 +1,91 @@
 #include "core.h"
-#include <iostream>
 
-Obraz::Obraz(QString gdzie)
+MPImage::MPImage(QString where)
 {
-    sciezka = gdzie;
-    status = tr("czeka");
+    this->path = where;
+    this->status = tr("czeka");
 }
 
-Obraz::~Obraz()
+MPImage::~MPImage()
 {
-    sciezka = "";
-    status = "";
+    this->path = "";
+    this->status = "";
 }
 
-void Obraz::ustaw(QString f,int j, QString szer, QString wys, QString przed)
+void MPImage::settings(QString format,int quality, QString width, QString height, QString prefix)
 {
     QDir* dir = new QDir("output");
     if(!dir->exists())
         dir->mkdir(".");
-    status = tr("ładuję...");
-    QFileInfo find(sciezka);
-    format = f;
-    jakosc = j;
-    output = dir->absolutePath()+"/"+przed+find.baseName();
-    std::cout<<output.toStdString()<<endl;
-    szerokosc = szer.toInt();
-    wysokosc = wys.toInt();
-    if((szerokosc != 0) or (wysokosc != 0))
+    this->status = tr("ładuję...");
+    QFileInfo find(path);
+    this->format = format;
+    this->quality = quality;
+    this->output = dir->absolutePath()+"/"+prefix+find.baseName();
+    this->width = width.toInt();
+    this->height = height.toInt();
+    if((this->width != 0) or (this->height != 0))
     {
         scale = true;
     }
     else
         scale = false;
-    watek = QtConcurrent::run(this,&Obraz::process);
-    status= tr("odpalony");
+    this->thread = QtConcurrent::run(this,&MPImage::process);
+    this->status= tr("odpalony");
 }
-//#################################################################### Watek
-void Obraz::process()
+//#################################################################### Thread
+void MPImage::process()
 {
-    int i=0;
-    QString ok=output;
-    while(QFileInfo(ok+"."+format.toLower()).exists())
+    int _i=0;
+    QString _ok=output;
+    while(QFileInfo(_ok+"."+format.toLower()).exists())
     {
-        ok = output + tostring(i) + "." + format;
-        i++;
+        _ok = output + toString(_i) + "." + format;
+        _i++;
     }
-    connect(this,SIGNAL(sprawdz()),this,SLOT(ok()));
+    connect(this,SIGNAL(check()),this,SLOT(ok()));
     if(progress < 1)
     {
         if(status == tr("czeka")) return;
-        wsk = new QImage(sciezka);
+        pointer = new QImage(path);
         progress = 1;
     }
     if(status == tr("czeka")) return;
     if(scale)
     {
-        if(szerokosc == 0) szerokosc = wsk->height();
-        if(wysokosc == 0) wysokosc = wsk->width();
-        *wsk = wsk->scaled(szerokosc,wysokosc,Qt::IgnoreAspectRatio,Qt::FastTransformation);
+        if(width == 0) width = pointer->height();
+        if(height == 0) height = pointer->width();
+        *pointer = pointer->scaled(width,height,Qt::IgnoreAspectRatio,Qt::FastTransformation);
     }
     if(status == tr("czeka")) return;
-    wsk->save(ok+"."+format.toLower(),format.toStdString().c_str(),jakosc);
-    free(wsk);
+    pointer->save(_ok+"."+format.toLower(),format.toStdString().c_str(),quality);
+    free(pointer);
     progress=0;
-    wsk=NULL;
-    emit sprawdz();
+    pointer=NULL;
+    emit check();
 }
-//#################################################################### Sygnaly i Sloty
-void Obraz::ok()
+//#################################################################### Signals and Slots
+void MPImage::ok()
 {
     status=tr("ukończony");
     emit done();
 }
 
-void Obraz::error()
+void MPImage::error()
 {
     status=tr("błąd");
     emit done();
 }
 
-void Obraz::killsignal()
+void MPImage::killSignal()
 {
     status = tr("czeka");
 }
-//#################################################################### Inne
-QString tostring(int liczba)
+//#################################################################### Others
+QString toString(int dec)
 {
     std::ostringstream ss;
-    ss << liczba;
-    QString napis;
-    return napis.fromStdString(ss.str());
+    ss << dec;
+    QString string;
+    return string.fromStdString(ss.str());
 }

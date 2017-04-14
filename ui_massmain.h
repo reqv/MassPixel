@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'massmain.ui'
 **
-** Created by: Qt User Interface Compiler version 4.8.4
+** Created by: Qt User Interface Compiler version 5.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,40 +10,40 @@
 #define UI_MASSMAIN_H
 
 #include <QtCore/QVariant>
-#include <QAction>
-#include <QApplication>
-#include <QButtonGroup>
-#include <QFrame>
-#include <QHBoxLayout>
-#include <QHeaderView>
-#include <QLabel>
-#include <QLineEdit>
-#include <QListWidget>
-#include <QMainWindow>
-#include <QMenu>
-#include <QMenuBar>
-#include <QPushButton>
-#include <QSlider>
-#include <QSpacerItem>
-#include <QVBoxLayout>
-#include <QWidget>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QFrame>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QListWidget>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
+#include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_MassMain
 {
 public:
-    QAction *actionWczytaj_Katalog;
+    QAction *actionLoadDir;
     QAction *actionZamknij;
     QAction *actionJPEG;
     QAction *actionPNG;
     QAction *actionBMP;
-    QAction *actionO_qt;
-    QAction *actionO_programie;
+    QAction *actionAboutQt;
+    QAction *actionAbout;
     QAction *actionAutor;
-    QAction *actionCzysc;
+    QAction *actionClear;
     QAction *actionICO;
-    QAction *actionWczytaj_Plik;
+    QAction *actionLoadFile;
     QAction *actionJPG;
     QAction *actionBW;
     QAction *actionEPS;
@@ -59,237 +59,240 @@ public:
     QAction *actionTIIFF;
     QAction *actionEPSI;
     QAction *actionPrzedrostek;
-    QAction *actionResetuj;
+    QAction *actionReset;
     QWidget *MASS;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
-    QPushButton *startthem;
-    QPushButton *stopthem;
+    QPushButton *startButton;
+    QPushButton *stopButton;
     QSpacerItem *horizontalSpacer;
-    QLineEdit *corobie;
-    QPushButton *ustawienia;
+    QLineEdit *settingsTextField;
+    QPushButton *optionsButton;
     QFrame *line;
-    QWidget *Usta;
+    QWidget *Options;
     QWidget *horizontalLayoutWidget;
-    QHBoxLayout *usta_bar;
-    QLabel *przedrostek_label;
-    QLineEdit *przedrostek;
-    QLabel *jakosc_label;
-    QSlider *jakosc_bar;
-    QLabel *Szerokosc_label;
-    QLineEdit *Szerokosc;
-    QLabel *Wysokosc_label;
-    QLineEdit *Wysokosc;
+    QHBoxLayout *OptionsGrid;
+    QLabel *prefixLabel;
+    QLineEdit *prefixField;
+    QLabel *QualityLabel;
+    QSlider *QualityBar;
+    QLabel *WidthLabel;
+    QLineEdit *WidthField;
+    QLabel *HeightLabel;
+    QLineEdit *HeightField;
     QListWidget *listWidget;
     QMenuBar *menu;
-    QMenu *menuPliki;
+    QMenu *menuFiles;
     QMenu *menuFormat;
     QMenu *menuInfo;
 
     void setupUi(QMainWindow *MassMain)
     {
         if (MassMain->objectName().isEmpty())
-            MassMain->setObjectName(QString::fromUtf8("MassMain"));
+            MassMain->setObjectName(QStringLiteral("MassMain"));
         MassMain->resize(1024, 823);
         MassMain->setMinimumSize(QSize(1024, 823));
         MassMain->setMaximumSize(QSize(1024, 823));
-        actionWczytaj_Katalog = new QAction(MassMain);
-        actionWczytaj_Katalog->setObjectName(QString::fromUtf8("actionWczytaj_Katalog"));
+        MassMain->setAcceptDrops(false);
+        actionLoadDir = new QAction(MassMain);
+        actionLoadDir->setObjectName(QStringLiteral("actionLoadDir"));
         actionZamknij = new QAction(MassMain);
-        actionZamknij->setObjectName(QString::fromUtf8("actionZamknij"));
+        actionZamknij->setObjectName(QStringLiteral("actionZamknij"));
         actionJPEG = new QAction(MassMain);
-        actionJPEG->setObjectName(QString::fromUtf8("actionJPEG"));
+        actionJPEG->setObjectName(QStringLiteral("actionJPEG"));
         actionJPEG->setCheckable(false);
         actionJPEG->setChecked(false);
         actionJPEG->setAutoRepeat(true);
         actionPNG = new QAction(MassMain);
-        actionPNG->setObjectName(QString::fromUtf8("actionPNG"));
+        actionPNG->setObjectName(QStringLiteral("actionPNG"));
         actionPNG->setCheckable(false);
         actionBMP = new QAction(MassMain);
-        actionBMP->setObjectName(QString::fromUtf8("actionBMP"));
+        actionBMP->setObjectName(QStringLiteral("actionBMP"));
         actionBMP->setCheckable(false);
-        actionO_qt = new QAction(MassMain);
-        actionO_qt->setObjectName(QString::fromUtf8("actionO_qt"));
-        actionO_programie = new QAction(MassMain);
-        actionO_programie->setObjectName(QString::fromUtf8("actionO_programie"));
+        actionAboutQt = new QAction(MassMain);
+        actionAboutQt->setObjectName(QStringLiteral("actionAboutQt"));
+        actionAbout = new QAction(MassMain);
+        actionAbout->setObjectName(QStringLiteral("actionAbout"));
         actionAutor = new QAction(MassMain);
-        actionAutor->setObjectName(QString::fromUtf8("actionAutor"));
-        actionCzysc = new QAction(MassMain);
-        actionCzysc->setObjectName(QString::fromUtf8("actionCzysc"));
+        actionAutor->setObjectName(QStringLiteral("actionAutor"));
+        actionClear = new QAction(MassMain);
+        actionClear->setObjectName(QStringLiteral("actionClear"));
         actionICO = new QAction(MassMain);
-        actionICO->setObjectName(QString::fromUtf8("actionICO"));
-        actionWczytaj_Plik = new QAction(MassMain);
-        actionWczytaj_Plik->setObjectName(QString::fromUtf8("actionWczytaj_Plik"));
+        actionICO->setObjectName(QStringLiteral("actionICO"));
+        actionLoadFile = new QAction(MassMain);
+        actionLoadFile->setObjectName(QStringLiteral("actionLoadFile"));
         actionJPG = new QAction(MassMain);
-        actionJPG->setObjectName(QString::fromUtf8("actionJPG"));
+        actionJPG->setObjectName(QStringLiteral("actionJPG"));
         actionBW = new QAction(MassMain);
-        actionBW->setObjectName(QString::fromUtf8("actionBW"));
+        actionBW->setObjectName(QStringLiteral("actionBW"));
         actionEPS = new QAction(MassMain);
-        actionEPS->setObjectName(QString::fromUtf8("actionEPS"));
+        actionEPS->setObjectName(QStringLiteral("actionEPS"));
         actionEPSF = new QAction(MassMain);
-        actionEPSF->setObjectName(QString::fromUtf8("actionEPSF"));
+        actionEPSF->setObjectName(QStringLiteral("actionEPSF"));
         actionRGB = new QAction(MassMain);
-        actionRGB->setObjectName(QString::fromUtf8("actionRGB"));
+        actionRGB->setObjectName(QStringLiteral("actionRGB"));
         actionRGBA = new QAction(MassMain);
-        actionRGBA->setObjectName(QString::fromUtf8("actionRGBA"));
+        actionRGBA->setObjectName(QStringLiteral("actionRGBA"));
         actionTGA = new QAction(MassMain);
-        actionTGA->setObjectName(QString::fromUtf8("actionTGA"));
+        actionTGA->setObjectName(QStringLiteral("actionTGA"));
         actionPIC = new QAction(MassMain);
-        actionPIC->setObjectName(QString::fromUtf8("actionPIC"));
+        actionPIC->setObjectName(QStringLiteral("actionPIC"));
         actionJP2 = new QAction(MassMain);
-        actionJP2->setObjectName(QString::fromUtf8("actionJP2"));
+        actionJP2->setObjectName(QStringLiteral("actionJP2"));
         actionPCX = new QAction(MassMain);
-        actionPCX->setObjectName(QString::fromUtf8("actionPCX"));
+        actionPCX->setObjectName(QStringLiteral("actionPCX"));
         actionPPM = new QAction(MassMain);
-        actionPPM->setObjectName(QString::fromUtf8("actionPPM"));
+        actionPPM->setObjectName(QStringLiteral("actionPPM"));
         actionTif = new QAction(MassMain);
-        actionTif->setObjectName(QString::fromUtf8("actionTif"));
+        actionTif->setObjectName(QStringLiteral("actionTif"));
         actionTIIFF = new QAction(MassMain);
-        actionTIIFF->setObjectName(QString::fromUtf8("actionTIIFF"));
+        actionTIIFF->setObjectName(QStringLiteral("actionTIIFF"));
         actionEPSI = new QAction(MassMain);
-        actionEPSI->setObjectName(QString::fromUtf8("actionEPSI"));
+        actionEPSI->setObjectName(QStringLiteral("actionEPSI"));
         actionPrzedrostek = new QAction(MassMain);
-        actionPrzedrostek->setObjectName(QString::fromUtf8("actionPrzedrostek"));
-        actionResetuj = new QAction(MassMain);
-        actionResetuj->setObjectName(QString::fromUtf8("actionResetuj"));
+        actionPrzedrostek->setObjectName(QStringLiteral("actionPrzedrostek"));
+        actionReset = new QAction(MassMain);
+        actionReset->setObjectName(QStringLiteral("actionReset"));
         MASS = new QWidget(MassMain);
-        MASS->setObjectName(QString::fromUtf8("MASS"));
+        MASS->setObjectName(QStringLiteral("MASS"));
         MASS->setMinimumSize(QSize(1024, 768));
         MASS->setMaximumSize(QSize(1024, 768));
+        MASS->setAcceptDrops(false);
         verticalLayoutWidget = new QWidget(MASS);
-        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
         verticalLayoutWidget->setGeometry(QRect(10, 10, 1001, 771));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        startthem = new QPushButton(verticalLayoutWidget);
-        startthem->setObjectName(QString::fromUtf8("startthem"));
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        startButton = new QPushButton(verticalLayoutWidget);
+        startButton->setObjectName(QStringLiteral("startButton"));
 
-        horizontalLayout->addWidget(startthem);
+        horizontalLayout->addWidget(startButton);
 
-        stopthem = new QPushButton(verticalLayoutWidget);
-        stopthem->setObjectName(QString::fromUtf8("stopthem"));
+        stopButton = new QPushButton(verticalLayoutWidget);
+        stopButton->setObjectName(QStringLiteral("stopButton"));
 
-        horizontalLayout->addWidget(stopthem);
+        horizontalLayout->addWidget(stopButton);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        corobie = new QLineEdit(verticalLayoutWidget);
-        corobie->setObjectName(QString::fromUtf8("corobie"));
-        corobie->setReadOnly(true);
+        settingsTextField = new QLineEdit(verticalLayoutWidget);
+        settingsTextField->setObjectName(QStringLiteral("settingsTextField"));
+        settingsTextField->setReadOnly(true);
 
-        horizontalLayout->addWidget(corobie);
+        horizontalLayout->addWidget(settingsTextField);
 
-        ustawienia = new QPushButton(verticalLayoutWidget);
-        ustawienia->setObjectName(QString::fromUtf8("ustawienia"));
+        optionsButton = new QPushButton(verticalLayoutWidget);
+        optionsButton->setObjectName(QStringLiteral("optionsButton"));
 
-        horizontalLayout->addWidget(ustawienia);
+        horizontalLayout->addWidget(optionsButton);
 
 
         verticalLayout->addLayout(horizontalLayout);
 
         line = new QFrame(verticalLayoutWidget);
-        line->setObjectName(QString::fromUtf8("line"));
+        line->setObjectName(QStringLiteral("line"));
         line->setFrameShape(QFrame::HLine);
         line->setFrameShadow(QFrame::Sunken);
 
         verticalLayout->addWidget(line);
 
-        Usta = new QWidget(verticalLayoutWidget);
-        Usta->setObjectName(QString::fromUtf8("Usta"));
-        Usta->setMinimumSize(QSize(0, 35));
-        horizontalLayoutWidget = new QWidget(Usta);
-        horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
+        Options = new QWidget(verticalLayoutWidget);
+        Options->setObjectName(QStringLiteral("Options"));
+        Options->setMinimumSize(QSize(0, 35));
+        horizontalLayoutWidget = new QWidget(Options);
+        horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
         horizontalLayoutWidget->setGeometry(QRect(0, 0, 999, 33));
-        usta_bar = new QHBoxLayout(horizontalLayoutWidget);
-        usta_bar->setSpacing(6);
-        usta_bar->setContentsMargins(11, 11, 11, 11);
-        usta_bar->setObjectName(QString::fromUtf8("usta_bar"));
-        usta_bar->setContentsMargins(0, 0, 0, 0);
-        przedrostek_label = new QLabel(horizontalLayoutWidget);
-        przedrostek_label->setObjectName(QString::fromUtf8("przedrostek_label"));
+        OptionsGrid = new QHBoxLayout(horizontalLayoutWidget);
+        OptionsGrid->setSpacing(6);
+        OptionsGrid->setContentsMargins(11, 11, 11, 11);
+        OptionsGrid->setObjectName(QStringLiteral("OptionsGrid"));
+        OptionsGrid->setContentsMargins(0, 0, 0, 0);
+        prefixLabel = new QLabel(horizontalLayoutWidget);
+        prefixLabel->setObjectName(QStringLiteral("prefixLabel"));
 
-        usta_bar->addWidget(przedrostek_label);
+        OptionsGrid->addWidget(prefixLabel);
 
-        przedrostek = new QLineEdit(horizontalLayoutWidget);
-        przedrostek->setObjectName(QString::fromUtf8("przedrostek"));
-        przedrostek->setMinimumSize(QSize(100, 0));
-        przedrostek->setMaximumSize(QSize(100, 16777215));
+        prefixField = new QLineEdit(horizontalLayoutWidget);
+        prefixField->setObjectName(QStringLiteral("prefixField"));
+        prefixField->setMinimumSize(QSize(100, 0));
+        prefixField->setMaximumSize(QSize(100, 16777215));
 
-        usta_bar->addWidget(przedrostek);
+        OptionsGrid->addWidget(prefixField);
 
-        jakosc_label = new QLabel(horizontalLayoutWidget);
-        jakosc_label->setObjectName(QString::fromUtf8("jakosc_label"));
+        QualityLabel = new QLabel(horizontalLayoutWidget);
+        QualityLabel->setObjectName(QStringLiteral("QualityLabel"));
 
-        usta_bar->addWidget(jakosc_label);
+        OptionsGrid->addWidget(QualityLabel);
 
-        jakosc_bar = new QSlider(horizontalLayoutWidget);
-        jakosc_bar->setObjectName(QString::fromUtf8("jakosc_bar"));
-        jakosc_bar->setOrientation(Qt::Horizontal);
+        QualityBar = new QSlider(horizontalLayoutWidget);
+        QualityBar->setObjectName(QStringLiteral("QualityBar"));
+        QualityBar->setOrientation(Qt::Horizontal);
 
-        usta_bar->addWidget(jakosc_bar);
+        OptionsGrid->addWidget(QualityBar);
 
-        Szerokosc_label = new QLabel(horizontalLayoutWidget);
-        Szerokosc_label->setObjectName(QString::fromUtf8("Szerokosc_label"));
+        WidthLabel = new QLabel(horizontalLayoutWidget);
+        WidthLabel->setObjectName(QStringLiteral("WidthLabel"));
 
-        usta_bar->addWidget(Szerokosc_label);
+        OptionsGrid->addWidget(WidthLabel);
 
-        Szerokosc = new QLineEdit(horizontalLayoutWidget);
-        Szerokosc->setObjectName(QString::fromUtf8("Szerokosc"));
-        Szerokosc->setMaximumSize(QSize(60, 16777215));
+        WidthField = new QLineEdit(horizontalLayoutWidget);
+        WidthField->setObjectName(QStringLiteral("WidthField"));
+        WidthField->setMaximumSize(QSize(60, 16777215));
 
-        usta_bar->addWidget(Szerokosc);
+        OptionsGrid->addWidget(WidthField);
 
-        Wysokosc_label = new QLabel(horizontalLayoutWidget);
-        Wysokosc_label->setObjectName(QString::fromUtf8("Wysokosc_label"));
+        HeightLabel = new QLabel(horizontalLayoutWidget);
+        HeightLabel->setObjectName(QStringLiteral("HeightLabel"));
 
-        usta_bar->addWidget(Wysokosc_label);
+        OptionsGrid->addWidget(HeightLabel);
 
-        Wysokosc = new QLineEdit(horizontalLayoutWidget);
-        Wysokosc->setObjectName(QString::fromUtf8("Wysokosc"));
-        Wysokosc->setMaximumSize(QSize(60, 16777215));
+        HeightField = new QLineEdit(horizontalLayoutWidget);
+        HeightField->setObjectName(QStringLiteral("HeightField"));
+        HeightField->setMaximumSize(QSize(60, 16777215));
 
-        usta_bar->addWidget(Wysokosc);
+        OptionsGrid->addWidget(HeightField);
 
 
-        verticalLayout->addWidget(Usta);
+        verticalLayout->addWidget(Options);
 
         listWidget = new QListWidget(verticalLayoutWidget);
-        listWidget->setObjectName(QString::fromUtf8("listWidget"));
+        listWidget->setObjectName(QStringLiteral("listWidget"));
+        listWidget->setAcceptDrops(false);
 
         verticalLayout->addWidget(listWidget);
 
         MassMain->setCentralWidget(MASS);
         menu = new QMenuBar(MassMain);
-        menu->setObjectName(QString::fromUtf8("menu"));
-        menu->setGeometry(QRect(0, 0, 1024, 29));
-        menuPliki = new QMenu(menu);
-        menuPliki->setObjectName(QString::fromUtf8("menuPliki"));
+        menu->setObjectName(QStringLiteral("menu"));
+        menu->setGeometry(QRect(0, 0, 1024, 21));
+        menuFiles = new QMenu(menu);
+        menuFiles->setObjectName(QStringLiteral("menuFiles"));
         menuFormat = new QMenu(menu);
-        menuFormat->setObjectName(QString::fromUtf8("menuFormat"));
+        menuFormat->setObjectName(QStringLiteral("menuFormat"));
         menuFormat->setTearOffEnabled(false);
         menuInfo = new QMenu(menu);
-        menuInfo->setObjectName(QString::fromUtf8("menuInfo"));
+        menuInfo->setObjectName(QStringLiteral("menuInfo"));
         MassMain->setMenuBar(menu);
 
-        menu->addAction(menuPliki->menuAction());
+        menu->addAction(menuFiles->menuAction());
         menu->addAction(menuFormat->menuAction());
         menu->addAction(menuInfo->menuAction());
-        menuPliki->addAction(actionWczytaj_Plik);
-        menuPliki->addAction(actionWczytaj_Katalog);
-        menuPliki->addSeparator();
-        menuPliki->addAction(actionResetuj);
-        menuPliki->addAction(actionCzysc);
-        menuPliki->addSeparator();
-        menuPliki->addAction(actionZamknij);
+        menuFiles->addAction(actionLoadFile);
+        menuFiles->addAction(actionLoadDir);
+        menuFiles->addSeparator();
+        menuFiles->addAction(actionReset);
+        menuFiles->addAction(actionClear);
+        menuFiles->addSeparator();
+        menuFiles->addAction(actionZamknij);
         menuFormat->addAction(actionBMP);
         menuFormat->addAction(actionJPG);
         menuFormat->addAction(actionJPEG);
@@ -307,35 +310,35 @@ public:
         menuFormat->addSeparator();
         menuFormat->addAction(actionTGA);
         menuFormat->addAction(actionPCX);
-        menuInfo->addAction(actionO_qt);
+        menuInfo->addAction(actionAboutQt);
         menuInfo->addSeparator();
-        menuInfo->addAction(actionO_programie);
+        menuInfo->addAction(actionAbout);
 
         retranslateUi(MassMain);
-        QObject::connect(actionBMP, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionJPEG, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionPNG, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionCzysc, SIGNAL(triggered(bool)), MassMain, SLOT(czyscliste()));
-        QObject::connect(startthem, SIGNAL(clicked()), MassMain, SLOT(go()));
-        QObject::connect(actionICO, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionWczytaj_Plik, SIGNAL(triggered(bool)), MassMain, SLOT(load_file()));
-        QObject::connect(actionWczytaj_Katalog, SIGNAL(triggered(bool)), MassMain, SLOT(load_dir()));
-        QObject::connect(actionZamknij, SIGNAL(triggered(bool)), MassMain, SLOT(close()));
-        QObject::connect(actionO_qt, SIGNAL(triggered(bool)), MassMain, SLOT(oqt()));
-        QObject::connect(actionJPG, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionO_programie, SIGNAL(triggered(bool)), MassMain, SLOT(oprogramie()));
-        QObject::connect(actionJP2, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionPIC, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionTIIFF, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionTif, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionRGB, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionRGBA, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionTGA, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(actionPCX, SIGNAL(triggered(bool)), MassMain, SLOT(ZmienFormat()));
-        QObject::connect(stopthem, SIGNAL(clicked()), MassMain, SLOT(stopthem()));
-        QObject::connect(ustawienia, SIGNAL(clicked()), MassMain, SLOT(ustawienia()));
-        QObject::connect(jakosc_bar, SIGNAL(sliderMoved(int)), MassMain, SLOT(zmienjakosc(int)));
-        QObject::connect(actionResetuj, SIGNAL(triggered(bool)), MassMain, SLOT(reset()));
+        QObject::connect(actionBMP, SIGNAL(triggered()), MassMain, SLOT(changeFormat()));
+        QObject::connect(actionJPEG, SIGNAL(triggered()), MassMain, SLOT(changeFormat()));
+        QObject::connect(actionPNG, SIGNAL(triggered()), MassMain, SLOT(changeFormat()));
+        QObject::connect(actionClear, SIGNAL(triggered()), MassMain, SLOT(clearList()));
+        QObject::connect(startButton, SIGNAL(clicked()), MassMain, SLOT(go()));
+        QObject::connect(actionICO, SIGNAL(triggered()), MassMain, SLOT(changeFormat()));
+        QObject::connect(actionLoadFile, SIGNAL(triggered()), MassMain, SLOT(loadFile()));
+        QObject::connect(actionLoadDir, SIGNAL(triggered()), MassMain, SLOT(loadDir()));
+        QObject::connect(actionZamknij, SIGNAL(triggered()), MassMain, SLOT(close()));
+        QObject::connect(actionAboutQt, SIGNAL(triggered()), MassMain, SLOT(aboutQt()));
+        QObject::connect(actionJPG, SIGNAL(triggered()), MassMain, SLOT(changeFormat()));
+        QObject::connect(actionAbout, SIGNAL(triggered()), MassMain, SLOT(about()));
+        QObject::connect(actionJP2, SIGNAL(triggered()), MassMain, SLOT(changeFormat()));
+        QObject::connect(actionPIC, SIGNAL(triggered()), MassMain, SLOT(changeFormat()));
+        QObject::connect(actionTIIFF, SIGNAL(triggered()), MassMain, SLOT(changeFormat()));
+        QObject::connect(actionTif, SIGNAL(triggered()), MassMain, SLOT(changeFormat()));
+        QObject::connect(actionRGB, SIGNAL(triggered()), MassMain, SLOT(changeFormat()));
+        QObject::connect(actionRGBA, SIGNAL(triggered()), MassMain, SLOT(changeFormat()));
+        QObject::connect(actionTGA, SIGNAL(triggered()), MassMain, SLOT(changeFormat()));
+        QObject::connect(actionPCX, SIGNAL(triggered()), MassMain, SLOT(changeFormat()));
+        QObject::connect(stopButton, SIGNAL(clicked()), MassMain, SLOT(stopThem()));
+        QObject::connect(optionsButton, SIGNAL(clicked()), MassMain, SLOT(settings()));
+        QObject::connect(QualityBar, SIGNAL(sliderMoved(int)), MassMain, SLOT(changeQuality(int)));
+        QObject::connect(actionReset, SIGNAL(triggered()), MassMain, SLOT(reset()));
         QObject::connect(listWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)), MassMain, SLOT(one(QListWidgetItem*)));
 
         QMetaObject::connectSlotsByName(MassMain);
@@ -343,46 +346,46 @@ public:
 
     void retranslateUi(QMainWindow *MassMain)
     {
-        MassMain->setWindowTitle(QApplication::translate("MassMain", "MassMain", 0));
-        actionWczytaj_Katalog->setText(QApplication::translate("MassMain", "Wczytaj Katalog", 0));
-        actionZamknij->setText(QApplication::translate("MassMain", "Zamknij", 0));
-        actionJPEG->setText(QApplication::translate("MassMain", "JPEG", 0));
-        actionPNG->setText(QApplication::translate("MassMain", "PNG", 0));
-        actionBMP->setText(QApplication::translate("MassMain", "BMP", 0));
-        actionO_qt->setText(QApplication::translate("MassMain", "O Qt ...", 0));
-        actionO_programie->setText(QApplication::translate("MassMain", "O programie...", 0));
-        actionAutor->setText(QApplication::translate("MassMain", "Autor", 0));
-        actionCzysc->setText(QApplication::translate("MassMain", "Czysc", 0));
-        actionICO->setText(QApplication::translate("MassMain", "ICO", 0));
-        actionWczytaj_Plik->setText(QApplication::translate("MassMain", "Wczytaj Plik", 0));
-        actionJPG->setText(QApplication::translate("MassMain", "JPG", 0));
-        actionBW->setText(QApplication::translate("MassMain", "BW", 0));
-        actionEPS->setText(QApplication::translate("MassMain", "EPS", 0));
-        actionEPSF->setText(QApplication::translate("MassMain", "EPSF", 0));
-        actionRGB->setText(QApplication::translate("MassMain", "RGB", 0));
-        actionRGBA->setText(QApplication::translate("MassMain", "RGBA", 0));
-        actionTGA->setText(QApplication::translate("MassMain", "TGA", 0));
-        actionPIC->setText(QApplication::translate("MassMain", "PIC", 0));
-        actionJP2->setText(QApplication::translate("MassMain", "JP2", 0));
-        actionPCX->setText(QApplication::translate("MassMain", "PCX", 0));
-        actionPPM->setText(QApplication::translate("MassMain", "PPM", 0));
-        actionTif->setText(QApplication::translate("MassMain", "TIF", 0));
-        actionTIIFF->setText(QApplication::translate("MassMain", "TIFF", 0));
-        actionEPSI->setText(QApplication::translate("MassMain", "EPSI", 0));
-        actionPrzedrostek->setText(QApplication::translate("MassMain", "Przedrostek", 0));
-        actionResetuj->setText(QApplication::translate("MassMain", "Resetuj", 0));
-        startthem->setText(QApplication::translate("MassMain", "Start", 0));
-        stopthem->setText(QApplication::translate("MassMain", "Stop", 0));
-        ustawienia->setText(QApplication::translate("MassMain", "Ustawienia", 0));
-        przedrostek_label->setText(QApplication::translate("MassMain", "Przedrostek", 0));
-        przedrostek->setText(QApplication::translate("MassMain", "out_", 0));
-        jakosc_label->setText(QApplication::translate("MassMain", "Jako\305\233\304\207:", 0));
-        Szerokosc_label->setText(QApplication::translate("MassMain", "Szeroko\305\233\304\207", 0));
-        Szerokosc->setInputMask(QString());
-        Wysokosc_label->setText(QApplication::translate("MassMain", "Wysoko\305\233\304\207", 0));
-        menuPliki->setTitle(QApplication::translate("MassMain", "Pliki", 0));
-        menuFormat->setTitle(QApplication::translate("MassMain", "Format", 0));
-        menuInfo->setTitle(QApplication::translate("MassMain", "Info", 0));
+        MassMain->setWindowTitle(QApplication::translate("MassMain", "MassMain", Q_NULLPTR));
+        actionLoadDir->setText(QApplication::translate("MassMain", "Wczytaj Katalog", Q_NULLPTR));
+        actionZamknij->setText(QApplication::translate("MassMain", "Zamknij", Q_NULLPTR));
+        actionJPEG->setText(QApplication::translate("MassMain", "JPEG", Q_NULLPTR));
+        actionPNG->setText(QApplication::translate("MassMain", "PNG", Q_NULLPTR));
+        actionBMP->setText(QApplication::translate("MassMain", "BMP", Q_NULLPTR));
+        actionAboutQt->setText(QApplication::translate("MassMain", "O Qt ...", Q_NULLPTR));
+        actionAbout->setText(QApplication::translate("MassMain", "O programie...", Q_NULLPTR));
+        actionAutor->setText(QApplication::translate("MassMain", "Autor", Q_NULLPTR));
+        actionClear->setText(QApplication::translate("MassMain", "Czysc", Q_NULLPTR));
+        actionICO->setText(QApplication::translate("MassMain", "ICO", Q_NULLPTR));
+        actionLoadFile->setText(QApplication::translate("MassMain", "Wczytaj Plik", Q_NULLPTR));
+        actionJPG->setText(QApplication::translate("MassMain", "JPG", Q_NULLPTR));
+        actionBW->setText(QApplication::translate("MassMain", "BW", Q_NULLPTR));
+        actionEPS->setText(QApplication::translate("MassMain", "EPS", Q_NULLPTR));
+        actionEPSF->setText(QApplication::translate("MassMain", "EPSF", Q_NULLPTR));
+        actionRGB->setText(QApplication::translate("MassMain", "RGB", Q_NULLPTR));
+        actionRGBA->setText(QApplication::translate("MassMain", "RGBA", Q_NULLPTR));
+        actionTGA->setText(QApplication::translate("MassMain", "TGA", Q_NULLPTR));
+        actionPIC->setText(QApplication::translate("MassMain", "PIC", Q_NULLPTR));
+        actionJP2->setText(QApplication::translate("MassMain", "JP2", Q_NULLPTR));
+        actionPCX->setText(QApplication::translate("MassMain", "PCX", Q_NULLPTR));
+        actionPPM->setText(QApplication::translate("MassMain", "PPM", Q_NULLPTR));
+        actionTif->setText(QApplication::translate("MassMain", "TIF", Q_NULLPTR));
+        actionTIIFF->setText(QApplication::translate("MassMain", "TIFF", Q_NULLPTR));
+        actionEPSI->setText(QApplication::translate("MassMain", "EPSI", Q_NULLPTR));
+        actionPrzedrostek->setText(QApplication::translate("MassMain", "Przedrostek", Q_NULLPTR));
+        actionReset->setText(QApplication::translate("MassMain", "Resetuj", Q_NULLPTR));
+        startButton->setText(QApplication::translate("MassMain", "Start", Q_NULLPTR));
+        stopButton->setText(QApplication::translate("MassMain", "Stop", Q_NULLPTR));
+        optionsButton->setText(QApplication::translate("MassMain", "Ustawienia", Q_NULLPTR));
+        prefixLabel->setText(QApplication::translate("MassMain", "Przedrostek", Q_NULLPTR));
+        prefixField->setText(QApplication::translate("MassMain", "out_", Q_NULLPTR));
+        QualityLabel->setText(QApplication::translate("MassMain", "Jako\305\233\304\207:", Q_NULLPTR));
+        WidthLabel->setText(QApplication::translate("MassMain", "Szeroko\305\233\304\207", Q_NULLPTR));
+        WidthField->setInputMask(QString());
+        HeightLabel->setText(QApplication::translate("MassMain", "Wysoko\305\233\304\207", Q_NULLPTR));
+        menuFiles->setTitle(QApplication::translate("MassMain", "Pliki", Q_NULLPTR));
+        menuFormat->setTitle(QApplication::translate("MassMain", "Format", Q_NULLPTR));
+        menuInfo->setTitle(QApplication::translate("MassMain", "Info", Q_NULLPTR));
     } // retranslateUi
 
 };

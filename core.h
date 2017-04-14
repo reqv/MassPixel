@@ -15,38 +15,38 @@
 #include <QTranslator>
 #include <QLocale>
 
-QString tostring(int liczba);
+QString toString(int dec);
 
-class Obraz : public QObject
+class MPImage : public QObject
 {
     Q_OBJECT
 
 private:
     bool scale;
-    int wysokosc,szerokosc;
+    int height,width;
     int progress = 0;
     QString format;
-    int jakosc;
+    int quality;
     QString output;
-    QImage *wsk;
+    QImage *pointer;
 
 public:
     void process();
-    QFuture<void> watek;
-    Obraz(QString gdzie);
-    void ustaw(QString f, int j,QString szer="",QString wys="", QString przed = "out_");
-    QString sciezka;
+    QFuture<void> thread;
+    MPImage(QString where);
+    void settings(QString file, int quality,QString width="",QString height="", QString prefix = "out_");
+    QString path;
     QString status;
-    ~Obraz();
+    ~MPImage();
 
 signals:
     void done();
-    void sprawdz();
+    void check();
 
 public slots:
     void ok();
     void error();
-    void killsignal();
+    void killSignal();
 };
 
 #endif // CORE_H

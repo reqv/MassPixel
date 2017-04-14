@@ -1,8 +1,7 @@
 #include "massmain.h"
 #include "ui_massmain.h"
-#include <iostream>
 
-//########################################################################## Konstruktor/Destruktor
+//########################################################################## Constructor/Destructor
 MassMain::MassMain(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MassMain)
@@ -11,12 +10,12 @@ MassMain::MassMain(QWidget *parent) :
     format="PNG";
     ui->setupUi(this);
     setAcceptDrops(true);
-    ui->Usta->hide();
+    ui->Options->hide();
     setWindowIcon(QIcon(":/IMG/ico"));
-    ui->jakosc_bar->setRange(-1,100);
-    ui->corobie->setText(tr("Przetwarzam na format: ") + format + "\t" + tr("Jakość: auto"));
-    lista_elementow = new QList <Obraz*>;
-    aktualizujliste();
+    ui->QualityBar->setRange(-1,100);
+    ui->settingsTextField->setText(tr("Przetwarzam na format: ") + format + "\t" + tr("Jakość: auto"));
+    listOfElements = new QList <MPImage*>;
+    updateList();
 }
 
 MassMain::~MassMain()
@@ -26,203 +25,195 @@ MassMain::~MassMain()
 
 //########################################################################## Drag & Drop
 
-void MassMain::dragEnterEvent(QDragEnterEvent *event)   //rozpoznanie elementu przenoszonego
+void MassMain::dragEnterEvent(QDragEnterEvent *event)
 {
-     //if (event->mimeData()->hasFormat("image/jpg"))  //changed from hasFormat()
-    // {
-       //  std::cout<<"alright"<<std::endl;
+     if (event->mimeData()->hasText())
          event->acceptProposedAction();
-     //}else
-     //   std::cout<<"KURWA MAC"<<std::endl;
 }
 
 void MassMain::dropEvent(QDropEvent *event)
 {
-    QByteArray imageFormat; //sprawdza czy obrazek
-    QString nazwa = event->mimeData()->text();
-    nazwa=nazwa.remove("file://");
-    QStringList list = nazwa.split("\r\n",QString::SkipEmptyParts);
-    for(int i=0;i<list.count();i++)
+    QByteArray _imageFormat;
+    QUrl *_url = NULL;
+    QStringList _list = event->mimeData()->text().split(QRegExp("[\r\n]"),QString::SkipEmptyParts);
+    for(int i=0;i<_list.count();i++)
     {
-        imageFormat = QImageReader::imageFormat(list.at(i));
-        if(imageFormat != "")
+        _url = new QUrl(_list.at(i));
+        _imageFormat = QImageReader::imageFormat(_url->toLocalFile());
+        if(_imageFormat != "")
         {
-            Dodajnaliste(list.at(i));
+            addToList(_url->toLocalFile());
             event->acceptProposedAction();
-            aktualizujliste();
+            updateList();
         }
+        free(_url);
     }
+    _url = NULL;
 }
-//########################################################################## Lista
-void MassMain::Dodajnaliste(QString gdzie)
+//########################################################################## List Actions
+void MassMain::addToList(QString where)
 {
-    obraz_wsk = new Obraz(gdzie);
-    connect(obraz_wsk,SIGNAL(done()),this,SLOT(aktualizujliste()));
-    lista_elementow->append(obraz_wsk);
-    obraz_wsk = NULL;
+    imagePointer = new MPImage(where);
+    connect(imagePointer,SIGNAL(done()),this,SLOT(updateList()));
+    listOfElements->append(imagePointer);
+    imagePointer = NULL;
 }
 
-void MassMain::aktualizujliste()
+void MassMain::updateList()
 {
     ui->listWidget->clear();
-    QString name;
-    for(int i=0;i<lista_elementow->count();i++)
+    QString _name;
+    for(int i=0;i<listOfElements->count();i++)
     {
-        name = lista_elementow->at(i)->sciezka +" - "+lista_elementow->at(i)->status;
-        ui->listWidget->addItem(name);
+        _name = listOfElements->at(i)->path +" - "+listOfElements->at(i)->status;
+        ui->listWidget->addItem(_name);
     }
 }
-void MassMain::czyscliste()
+void MassMain::clearList()
 {
-    int ile = lista_elementow->count();
+    int _howMany = listOfElements->count();
     int i=0;
-    while(i < ile)
+    while(i < _howMany)
     {
-        obraz_wsk = lista_elementow->at(i);
-        if((obraz_wsk->status == tr("ukończony")) or (obraz_wsk->status == tr("czeka")))
+        imagePointer = listOfElements->at(i);
+        if((imagePointer->status == tr("ukończony")) or (imagePointer->status == tr("czeka")))
         {
-            lista_elementow->removeAt(i);
-            obraz_wsk->disconnect();
-            free(obraz_wsk);
-            obraz_wsk=NULL;
-            ile--;
+            listOfElements->removeAt(i);
+            imagePointer->disconnect();
+            free(imagePointer);
+            imagePointer=NULL;
+            _howMany--;
         }
         else
             i++;
     }
-    aktualizujliste();
+    updateList();
 }
-//########################################################################## Klawisze
-
-void MassMain::go()
-{
-    for(int i=0;i<lista_elementow->count();i++)
-    {
-        if(lista_elementow->at(i)->status == tr("czeka"))
-            lista_elementow->at(i)->ustaw(format,jakosc,ui->Szerokosc->text(),ui->Wysokosc->text(),ui->przedrostek->text());
-    }
-    aktualizujliste();
-}
-
-void MassMain::stopthem()
-{
-
-    for(int i=0;i<lista_elementow->count();i++)
-    {
-        if(lista_elementow->at(i)->status == tr("odpalony"))
-            lista_elementow->at(i)->killsignal();
-    }
-    aktualizujliste();
-}
-
 
 void MassMain::reset()
 {
-    for(int i=0;i<lista_elementow->count();i++)
+    for(int i=0;i<listOfElements->count();i++)
     {
-        if(lista_elementow->at(i)->status == tr("ukończony"))
-            lista_elementow->at(i)->status = tr("czeka");
+        if(listOfElements->at(i)->status == tr("ukończony"))
+            listOfElements->at(i)->status = tr("czeka");
     }
-    aktualizujliste();
+    updateList();
+}
+
+void MassMain::keyPressEvent(QKeyEvent *k)
+{
+    if(k->key() == Qt::Key_Delete)oneRemove();
+}
+
+void MassMain::oneRemove()
+{
+    QListWidgetItem *_item;
+    for(int i=0;i<ui->listWidget->count();i++)
+    {
+        _item = ui->listWidget->item(i);
+        if(_item->isSelected())
+        {
+            ui->listWidget->removeItemWidget(_item);
+            MPImage *polo = listOfElements->at(i);
+            listOfElements->removeAt(i);
+            polo->disconnect();
+            free(polo);
+            updateList();
+            return;
+        }
+    }
+}
+//########################################################################## Thread Actions
+
+void MassMain::go()
+{
+    for(int i=0;i<listOfElements->count();i++)
+    {
+        if(listOfElements->at(i)->status == tr("czeka"))
+            listOfElements->at(i)->settings(format,quality,ui->WidthField->text(),ui->HeightField->text(),ui->prefixField->text());
+    }
+    updateList();
+}
+
+void MassMain::stopThem()
+{
+
+    for(int i=0;i<listOfElements->count();i++)
+    {
+        if(listOfElements->at(i)->status == tr("odpalony"))
+            listOfElements->at(i)->killSignal();
+    }
+    updateList();
 }
 
 void MassMain::one(QListWidgetItem* item)
 {
-    int row = item->listWidget()->row(item);
-    QString status = lista_elementow->at(row)->status;
-    if(status == tr("czeka"))
-        lista_elementow->at(row)->ustaw(format,jakosc,ui->Szerokosc->text(),ui->Wysokosc->text(),ui->przedrostek->text());
-    if(status == tr("odpalony"))
-        lista_elementow->at(row)->killsignal();
+    int _row = item->listWidget()->row(item);
+    QString _status = listOfElements->at(_row)->status;
+    if(_status == tr("czeka"))
+        listOfElements->at(_row)->settings(format,quality,ui->WidthField->text(),ui->HeightField->text(),ui->prefixField->text());
+    if(_status == tr("odpalony"))
+        listOfElements->at(_row)->killSignal();
 }
-//########################################################################## Akcje z menu
-void MassMain::ZmienFormat()
+//########################################################################## Menu Actions
+void MassMain::changeFormat()
 {
-    QString codojakosci;
     ui->menuFormat->setActiveAction((QAction*)QObject::sender());
     format=ui->menuFormat->activeAction()->text();
-    if(jakosc < 0)codojakosci = "auto";
-    else
-        codojakosci = tostring(jakosc);
-    ui->corobie->setText(tr("Przetwarzam na format: ") + format + "\t" + tr("Jakość: ") + codojakosci);
+    changeQuality(quality);
 }
 
-void MassMain::zmienjakosc(int ile)
+void MassMain::changeQuality(int dec)
 {
-    QString codojakosci;
-    jakosc=ile;
-    if(jakosc < 0)codojakosci = "auto";
+    QString _qualityCheck;
+    quality=dec;
+    if(quality < 0)_qualityCheck = "auto";
     else
-        codojakosci = tostring(jakosc);
-    ui->corobie->setText(tr("Przetwarzam na format: ") + format + "\t" + tr("Jakość: ") + codojakosci);
+        _qualityCheck = toString(quality);
+    ui->settingsTextField->setText(tr("Przetwarzam na format: ") + format + "\t" + tr("Jakość: ") + _qualityCheck);
 }
 
-void MassMain::load_dir()
+void MassMain::loadDir()
 {
-    QString nazwa = QFileDialog::getExistingDirectory(this,tr("Wybierz Katalog"),"");
-    QDir direk(nazwa);
-    QStringList list;
-    QStringList filtr(QStringList()<< "*.bmp"<< "*.bw"<< "*.dds"<< "*.eps"<< "*.epsf"<< "*.epsi"<< "*.exr"<< "*.gif"<< "*.ico"<< "*.jp2"<< "*.jpeg"<< "*.jpg"<< "*.mng"<< "*.pbm"<< "*.pcx"<< "*.pgm"<< "*.pic"<< "*.png"<< "*.ppm"<< "*.psd"<< "*.ras"<< "*.rgb"<< "*.rgba"<< "*.sgi"<< "*.svg"<< "*.svgz"<< "*.tga"<< "*.tif"<< "*.tiff"<< "*.xbm"<< "*.xcf"<< "*.xpm"<< "*.xv");
-    list = direk.entryList(filtr);
-    for(int i=0;i<list.count();i++)
+    QString _name = QFileDialog::getExistingDirectory(this,tr("Wybierz Katalog"),"");
+    QDir _dir(_name);
+    QStringList _list;
+    QStringList _filter(QStringList()<< "*.bmp"<< "*.bw"<< "*.dds"<< "*.eps"<< "*.epsf"<< "*.epsi"<< "*.exr"<< "*.gif"<< "*.ico"<< "*.jp2"<< "*.jpeg"<< "*.jpg"<< "*.mng"<< "*.pbm"<< "*.pcx"<< "*.pgm"<< "*.pic"<< "*.png"<< "*.ppm"<< "*.psd"<< "*.ras"<< "*.rgb"<< "*.rgba"<< "*.sgi"<< "*.svg"<< "*.svgz"<< "*.tga"<< "*.tif"<< "*.tiff"<< "*.xbm"<< "*.xcf"<< "*.xpm"<< "*.xv");
+    _list = _dir.entryList(_filter);
+    for(int i=0;i<_list.count();i++)
     {
-        if(list.at(i) != "")
+        if(_list.at(i) != "")
         {
-            Dodajnaliste(nazwa+"/"+list.at(i));
+            addToList(_name+"/"+_list.at(i));
         }
     }
-    aktualizujliste();
+    updateList();
 }
 
-void MassMain::load_file()
+void MassMain::loadFile()
 {
-    QString nazwa = QFileDialog::getOpenFileName(this,tr("Wybierz Plik"),"",tr("Obrazek")+" (*.bmp *.bw *.dds *.eps *.epsf *.epsi *.exr *.gif *.ico *.jp2 *.jpeg *.jpg *.mng *.pbm *.pcx *.pgm *.pic *.png *.ppm *.psd *.ras *.rgb *.rgba *.sgi *.svg *.svgz *.tga *.tif *.tiff *.xbm *.xcf *.xpm *.xv)");
-    if(nazwa != "")
+    QString _name = QFileDialog::getOpenFileName(this,tr("Wybierz Plik"),"",tr("Obrazek")+" (*.bmp *.bw *.dds *.eps *.epsf *.epsi *.exr *.gif *.ico *.jp2 *.jpeg *.jpg *.mng *.pbm *.pcx *.pgm *.pic *.png *.ppm *.psd *.ras *.rgb *.rgba *.sgi *.svg *.svgz *.tga *.tif *.tiff *.xbm *.xcf *.xpm *.xv)");
+    if(_name != "")
     {
-        Dodajnaliste(nazwa);
+        addToList(_name);
     }
-    aktualizujliste();
+    updateList();
 }
 
-void MassMain::oqt()
+void MassMain::aboutQt()
 {
     QMessageBox::aboutQt(this,tr("O Qt..."));
 }
 
-void MassMain::oprogramie()
+void MassMain::about()
 {
-    QMessageBox::about(this,tr("O programie..."),tr("MASSPIXEL v 1.0 beta") + "\n" + tr("Jest to program do masowej konwersji plików graficznych na inny obsługiwany format możliwie w jak najkrótszym czasie, zawiera również kilka dodatkowych ustawień.") + "\n\n" + tr("Autorem programu jest:") + "\nWojciech Janeczek\npapajow@gmail.com");
+    QMessageBox::about(this,tr("O programie..."),tr("MASSPIXEL v 1.0 beta") + "\n" + tr("Jest to program do masowej konwersji plików graficznych na inny obsługiwany format możliwie w jak najkrótszym czasie, zawiera również kilka dodatkowych ustawień.") + "\n\n" + tr("Autorem programu jest:") + "\nWojciech Janeczek\nwojciech.janeczek@gmail.com");
 }
 
-void MassMain::ustawienia()
+void MassMain::settings()
 {
-    if(ui->Usta->isHidden())
-        ui->Usta->show();
+    if(ui->Options->isHidden())
+        ui->Options->show();
     else
-        ui->Usta->hide();
-}
-
-//########################################################################## Klawiatura
-void MassMain::keyPressEvent(QKeyEvent *k)
-{
-    if(k->key() == Qt::Key_Delete)one_r();
-}
-
-void MassMain::one_r()
-{
-    QListWidgetItem *item;
-    for(int i=0;i<ui->listWidget->count();i++)
-    {
-        item = ui->listWidget->item(i);
-        if(item->isSelected())
-        {
-            ui->listWidget->removeItemWidget(item);
-            Obraz *polo = lista_elementow->at(i);
-            lista_elementow->removeAt(i);
-            polo->disconnect();
-            free(polo);
-            aktualizujliste();
-            return;
-        }
-    }
+        ui->Options->hide();
 }
