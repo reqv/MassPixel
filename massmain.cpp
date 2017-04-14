@@ -207,7 +207,7 @@ void MassMain::aboutQt()
 
 void MassMain::about()
 {
-    QMessageBox::about(this,tr("O programie..."),tr("MASSPIXEL v 1.0 beta") + "\n" + tr("Jest to program do masowej konwersji plików graficznych na inny obsługiwany format możliwie w jak najkrótszym czasie, zawiera również kilka dodatkowych ustawień.") + "\n\n" + tr("Autorem programu jest:") + "\nWojciech Janeczek\nwojciech.janeczek@gmail.com");
+    QMessageBox::about(this,tr("O programie..."),tr("MASSPIXEL v 1.0") + "\n" + tr("Jest to program do masowej konwersji plików graficznych na inny obsługiwany format możliwie w jak najkrótszym czasie, zawiera również kilka dodatkowych ustawień.") + "\n\n" + tr("Autorem programu jest:") + "\nWojciech Janeczek\nwojciech.janeczek@gmail.com");
 }
 
 void MassMain::settings()
